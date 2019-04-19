@@ -26,14 +26,5 @@ ADD . .
 # Listen to port 80 at runtime
 EXPOSE 5000
 
-ENV FLASK_APP=manage.py
-ENV FLASK_ENV=development
-ENV SECRET_KEY=secret
-
-# Initiate database
-RUN flask db init
-RUN flask db migrate
-RUN flask db upgrade
-
 # Define our command to be run when launching the container
 CMD ["flask", "run", "--host", "0.0.0.0"]
