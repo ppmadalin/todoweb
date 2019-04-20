@@ -1,16 +1,16 @@
 <div class="container pb-3">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{{ url_for('todo_app.index') }}">
-        ToDo App 
+        Todo 
     </a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         {% if session.id %}
-        <li class="nav-item">
-          <span class="navbar-text text-dark">{{ session.full_name }}</span>
+        <li class="nav-item mr-5">
+          <span class="navbar-text text-dark">Welcome {{ session.full_name }}!</span>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('todo_app.task')}}">
+          <a class="nav-link" href="{{ url_for('todo_app.add_task')}}">
             New Task
           </a>
         </li>
@@ -18,6 +18,9 @@
           <a class="nav-link" href="{{ url_for('user_app.logout')}}">Logout</a>
         </li>
         {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('user_app.register')}}">Register</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('user_app.login')}}">Login</a>
         </li>

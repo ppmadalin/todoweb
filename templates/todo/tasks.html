@@ -1,0 +1,23 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Description</th>
+      <th scope="col">Start date</th>
+      <th scope="col">End date</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for task in tasks %}
+    <tr>
+        <th scope="row">{{ task.id }}</th>
+        <td>{{ task.description }}</td>
+        <td>{{ task.start_date.strftime('%Y-%m-%d') }}</td>
+        <td>{{ task.end_date.strftime('%Y-%m-%d') }}</td>
+        <td>{{ task.status }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
