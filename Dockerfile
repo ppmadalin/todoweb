@@ -23,6 +23,10 @@ RUN pip install -r requirements.txt
 # now copy all the files in this directory to /code
 ADD . .
 
+# migrate database
+RUN flask db migrate
+RUN flask db upgrade
+
 # Listen to port 80 at runtime
 EXPOSE 5000
 
