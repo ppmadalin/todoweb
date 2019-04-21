@@ -7,17 +7,17 @@ from flask_migrate import Migrate
 db = SQLAlchemy()
 
 
-def create_app(**config):
+def create_app(development=True):
     """
     Application factory
     """
     app = Flask(__name__)
 
     # Load config
-    app.config.from_pyfile('settings.py')
-
-    # Update config if any is given
-    app.config.update(config)
+    if development:
+        app.config.from_object('settings.DevelopmentConfig')
+    else:
+        app.config.from_object('settings.ProductionConfig')
 
     # Initialize database
     db.init_app(app)

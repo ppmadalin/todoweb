@@ -9,7 +9,7 @@ from flask import session
 from flask import redirect
 from flask import url_for
 from flask import flash
-
+from flask import request
 
 from application import db
 from .forms import AddTaskForm
@@ -22,11 +22,14 @@ todo_app = Blueprint('todo_app', __name__)
 
 
 @todo_app.route('/')
+@login_required
 def index():
     """
     Index page
     """
-    tasks = Task.query.all()
+    page = int(request.values.get('page', '1'))
+    user = User.query.get(1)
+    tasks = Task.query.filter_by(owner=user).paginate(page, 5, False)
 
     return render_template('todo/index.html', tasks=tasks )
 
