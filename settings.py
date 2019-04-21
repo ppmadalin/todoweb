@@ -6,6 +6,12 @@ Contains all the settings of the app
 import os
 import pathlib
 
+from dotenv import load_dotenv
+
+# load dotenv in the base root
+basedir = os.path.abspath(os.path.dirname(__file__))
+dotenv_path = os.path.join(basedir, '.env')
+load_dotenv(dotenv_path)
 
 class Config(object):
     DEBUG = False
