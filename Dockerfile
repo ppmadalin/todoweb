@@ -6,9 +6,7 @@ MAINTAINER Madalin Popa, contact@madalinpopa.com
 RUN apt-get update
 
 # install sqlite and mysql
-RUN apt-get -y install sqlite
-RUN apt-get -y install mysql-server
-
+RUN apt-get -y install sqlite mysql-server
 
 # make a local directory
 RUN mkdir /opt/todoweb
@@ -26,11 +24,12 @@ RUN pip install -r requirements.txt
 ADD . .
 
 # create user and database within mysql
-RUN mysql mysql -u root < /opt/todoweb/instance/init_mysql.txt
+# RUN /etc/init.d/mysqld start
+# RUN mysql -h 127.0.0.1 -P 3306 --protocol=tcp -u root -p < /opt/todoweb/dbinit.sql
 
 # migrate database
-RUN flask db migrate
-RUN flask db upgrade
+# RUN flask db migrate
+# RUN flask db upgrade
 
 # Listen to port 80 at runtime
 EXPOSE 5000
