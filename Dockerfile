@@ -5,8 +5,10 @@ MAINTAINER Madalin Popa, contact@madalinpopa.com
 # update 
 RUN apt-get update
 
-# install sqlite
+# install sqlite and mysql
 RUN apt-get -y install sqlite
+RUN apt-get -y install mysql-server
+
 
 # make a local directory
 RUN mkdir /opt/todoweb
@@ -22,6 +24,9 @@ RUN pip install -r requirements.txt
 
 # now copy all the files in this directory to /code
 ADD . .
+
+# create user and database within mysql
+RUN mysql mysql -u root < /opt/todoweb/instance/init_mysql.txt
 
 # migrate database
 RUN flask db migrate
