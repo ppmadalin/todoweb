@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Tasks{% endblock %}
+{% block title %}Index{% endblock %}
 
 {% block nav %}{% include 'nav.html' %}{% endblock %}
 
@@ -9,10 +9,16 @@
 <div class="row">
 
     <div class="offset-md-2 col-md-8 pt-5">
-
-        {% include '_flashmessages.html' %}
-
-        {% include 'todo/tasks.html'  %}
+        <h4>Wlecome!</h4>
+        <p>
+        Simple Todo application written using FLask along with the 
+        following extensions:
+        </p>
+        <ul>
+            <li>Flask-SQLAlchemy</li>
+            <li>Flask-Migrate</li>
+            <li>Flask-WTF</li>
+        </ul>
     </div>
 
 </div>

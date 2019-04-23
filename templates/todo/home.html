@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block nav %}{% include 'nav.html' %}{% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="offset-md-2 col-md-8 pt-5">
+
+        {% include '_flashmessages.html' %}
+
+        {% include 'todo/tasks.html'  %}
+    </div>
+    <div class="offset-md-2 col-md-8 pt-5">
+      {% if tasks.has_prev %}
+        <a href="{{ url_for('todo_app.home', page=tasks.prev_num) }}">&lt;&lt; Previous Page</a>
+      {% endif %}
+      {% if tasks.has_next %}
+        <a href="{{ url_for('todo_app.home', page=tasks.next_num) }}">Next Page &gt;&gt;</a>
+      {% endif %}
+  </div>
+
+</div>
+
+{% endblock content %}

@@ -7,6 +7,7 @@
       <th scope="col">Start date</th>
       <th scope="col">End date</th>
       <th scope="col">Status</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,17 @@
         <td>{{ task.start_date.strftime('%Y-%m-%d') }}</td>
         <td>{{ task.end_date.strftime('%Y-%m-%d') }}</td>
         <td>{{ task.status }}</td>
+        <td>
+            <a href={{ url_for('.check', task_id=task.id) }}>
+                <img src={{ url_for('static', filename='icons/check.png') }}>
+            </a>
+            <a href={{ url_for('.uncheck', task_id=task.id) }}>
+                <img src={{ url_for('static', filename='icons/uncheck.png') }}>
+            </a>
+            <a href={{ url_for('.delete', task_id=task.id) }}>
+                <img src={{ url_for('static', filename='icons/delete.png') }}>
+            </a>
+        </td>
     </tr>
     {% endfor %}
   </tbody>

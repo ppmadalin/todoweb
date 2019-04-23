@@ -5,6 +5,8 @@ Just a simple web TODO app made with Python and Flask.
 
 Requires python 3.7 installed.
 
+[Demo](https://i.imgur.com/nTKGLO8.png)
+
 ## Instalation
 
 - Create a Docker image:

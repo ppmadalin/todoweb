@@ -12,7 +12,8 @@ from wtforms import BooleanField
 
 
 class AddTaskForm(FlaskForm):
-   description = StringField('Description', [validators.InputRequired()])
+   description = StringField('Description', [validators.InputRequired(),
+                                             validators.Length(min=5, max=80)])
    start_date = DateField('Start date')
    end_date = DateField('End date')
 
